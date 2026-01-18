@@ -1,0 +1,211 @@
+[
+  {
+    "pr_metadata": {
+      "number": 42,
+      "title": "Add feature: User authentication",
+      "state": "closed",
+      "merged_at": "2024-01-15T10:30:00Z",
+      "author": {
+        "login": "developer1",
+        "id": 12345678
+      },
+      "base_branch": "main",
+      "head_branch": "feature/user-auth",
+      "repository": "scytale-repo2"
+    },
+    "reviews": [
+      {
+        "id": 123456789,
+        "node_id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MTIzNDU2Nzg5",
+        "user": {
+          "login": "reviewer1",
+          "id": 87654321
+        },
+        "body": "Looks good!",
+        "state": "APPROVED",
+        "submitted_at": "2024-01-15T09:00:00Z"
+      },
+      {
+        "id": 123456790,
+        "node_id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MTIzNDU2Nzkw",
+        "user": {
+          "login": "reviewer2",
+          "id": 87654322
+        },
+        "body": "Minor suggestion",
+        "state": "COMMENTED",
+        "submitted_at": "2024-01-15T09:15:00Z"
+      }
+    ],
+    "status_checks": {
+      "state": "success",
+      "statuses": [
+        {
+          "state": "success",
+          "target_url": "https://ci.example.com/builds/123",
+          "description": "All checks passed",
+          "context": "ci/tests",
+          "created_at": "2024-01-15T10:00:00Z",
+          "updated_at": "2024-01-15T10:05:00Z"
+        },
+        {
+          "state": "success",
+          "target_url": "https://ci.example.com/builds/124",
+          "description": "Linting passed",
+          "context": "ci/lint",
+          "created_at": "2024-01-15T10:01:00Z",
+          "updated_at": "2024-01-15T10:06:00Z"
+        }
+      ],
+      "sha": "abc123def456",
+      "total_count": 2,
+      "repository": {
+        "id": 123456789,
+        "name": "scytale-repo2",
+        "full_name": "Scytale-exercise/scytale-repo2"
+      }
+    },
+    "commits": [
+      {
+        "sha": "abc123def456",
+        "commit": {
+          "author": {
+            "name": "Developer One",
+            "email": "developer1@example.com",
+            "date": "2024-01-15T08:00:00Z"
+          },
+          "message": "Add user authentication feature"
+        }
+      },
+      {
+        "sha": "def456ghi789",
+        "commit": {
+          "author": {
+            "name": "Developer One",
+            "email": "developer1@example.com",
+            "date": "2024-01-15T08:30:00Z"
+          },
+          "message": "Fix authentication bug"
+        }
+      }
+    ]
+  },
+  {
+    "pr_metadata": {
+      "number": 43,
+      "title": "Fix bug: Memory leak",
+      "state": "closed",
+      "merged_at": "2024-01-14T15:20:00Z",
+      "author": {
+        "login": "developer2",
+        "id": 23456789
+      },
+      "base_branch": "main",
+      "head_branch": "fix/memory-leak",
+      "repository": "scytale-repo3"
+    },
+    "reviews": [],
+    "status_checks": {
+      "state": "success",
+      "statuses": [
+        {
+          "state": "success",
+          "target_url": "https://ci.example.com/builds/125",
+          "description": "All checks passed",
+          "context": "ci/tests",
+          "created_at": "2024-01-14T14:00:00Z",
+          "updated_at": "2024-01-14T14:05:00Z"
+        }
+      ],
+      "sha": "xyz789uvw012",
+      "total_count": 1,
+      "repository": {
+        "id": 987654321,
+        "name": "scytale-repo3",
+        "full_name": "Scytale-exercise/scytale-repo3"
+      }
+    },
+    "commits": [
+      {
+        "sha": "xyz789uvw012",
+        "commit": {
+          "author": {
+            "name": "Developer Two",
+            "email": "developer2@example.com",
+            "date": "2024-01-14T13:00:00Z"
+          },
+          "message": "Fix memory leak in cache"
+        }
+      }
+    ]
+  },
+  {
+    "pr_metadata": {
+      "number": 44,
+      "title": "Update dependencies",
+      "state": "closed",
+      "merged_at": "2024-01-13T12:10:00Z",
+      "author": {
+        "login": "developer3",
+        "id": 34567890
+      },
+      "base_branch": "main",
+      "head_branch": "chore/update-deps",
+      "repository": "scytale-repo2"
+    },
+    "reviews": [
+      {
+        "id": 123456791,
+        "node_id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MTIzNDU2Nzkx",
+        "user": {
+          "login": "reviewer1",
+          "id": 87654321
+        },
+        "body": "Approved",
+        "state": "APPROVED",
+        "submitted_at": "2024-01-13T11:00:00Z"
+      }
+    ],
+    "status_checks": {
+      "state": "failure",
+      "statuses": [
+        {
+          "state": "success",
+          "target_url": "https://ci.example.com/builds/126",
+          "description": "Tests passed",
+          "context": "ci/tests",
+          "created_at": "2024-01-13T10:00:00Z",
+          "updated_at": "2024-01-13T10:05:00Z"
+        },
+        {
+          "state": "failure",
+          "target_url": "https://ci.example.com/builds/127",
+          "description": "Security scan failed",
+          "context": "ci/security",
+          "created_at": "2024-01-13T10:01:00Z",
+          "updated_at": "2024-01-13T10:06:00Z"
+        }
+      ],
+      "sha": "mno345pqr678",
+      "total_count": 2,
+      "repository": {
+        "id": 123456789,
+        "name": "scytale-repo2",
+        "full_name": "Scytale-exercise/scytale-repo2"
+      }
+    },
+    "commits": [
+      {
+        "sha": "mno345pqr678",
+        "commit": {
+          "author": {
+            "name": "Developer Three",
+            "email": "developer3@example.com",
+            "date": "2024-01-13T09:00:00Z"
+          },
+          "message": "Update package dependencies"
+        }
+      }
+    ]
+  }
+]

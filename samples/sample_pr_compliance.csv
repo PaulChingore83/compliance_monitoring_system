@@ -1,0 +1,4 @@
+pr_number,pr_title,author,repository,merged_at,code_review_passed,status_checks_passed,is_compliant,review_count,approved_review_count,status_check_count,commit_count
+42,Add feature: User authentication,developer1,scytale-repo2,2024-01-15T10:30:00Z,True,True,True,2,1,2,2
+43,Fix bug: Memory leak,developer2,scytale-repo3,2024-01-14T15:20:00Z,False,True,False,0,0,1,1
+44,Update dependencies,developer3,scytale-repo2,2024-01-13T12:10:00Z,True,False,False,1,1,2,1
