@@ -72,6 +72,87 @@ flowchart LR
 
 - **Clone the repository**
 
+## Step 1: Configuration Setup
+Configure Environment Variables
+bash
+
+# Create .env file from example
+cp .env.example .env
+
+# Edit .env with your preferred editor
+nano .env  # or code .env, vim .env, etc.
+
+- **Minimum .env configuration:**
+
+*env*
+
+# Required: GitHub Configuration
+GITHUB_ACCESS_TOKEN=ghp_your_token_here  # Optional but recommended
+GITHUB_OWNER=home-assistant
+
+# Optional: Snowflake (set to false if not using)
+SNOWFLAKE_ENABLED=false
+
+# Airflow Configuration
+AIRFLOW_UID=50000
+AIRFLOW_GID=50000
+FERNET_KEY=generate key
+
+Get GitHub Token (Optional but Recommended)
+
+    Go to https://github.com/settings/tokens
+
+    Click "Generate new token" → "Generate new token (classic)"
+
+    Add note: "Airflow Compliance Pipeline"
+
+    Select scopes: repo (full control of private repositories) or public_repo (for public only)
+
+    Copy the token (starts with ghp_)
+
+    Add to .env file
+
+**Step 2: Build and Start Docker Containers**
+*bash*
+
+# Build the Docker images
+docker-compose build
+
+# Start all services in detached mode
+docker-compose up -d
+
+# Check if services are running
+docker-compose ps
+
+Expected output:
+text
+
+Name                          Command              State           Ports
+--------------------------------------------------------------------------------
+github-compliance-airflow-scheduler-1   /entrypoint.sh scheduler       Up      8080/tcp
+github-compliance-airflow-webserver-1   /entrypoint.sh webserver       Up      0.0.0.0:8080->8080/tcp
+github-compliance-postgres-1            docker-entrypoint.sh postgres  Up      5432/tcp
+
+**Step 4: Verify Airflow is Running**
+*bash*
+
+# Check logs to ensure Airflow initialized
+docker-compose logs airflow-webserver --tail=50
+
+# Or check directly via curl
+curl http://localhost:8080/health
+
+Expected: Should return JSON with "status": "healthy"
+Step 6: Access Airflow Web UI
+
+    Open browser and go to: http://localhost:8080
+
+    Login credentials:
+
+        Username: admin
+
+        Password: admin
+
 ```bash
 git clone <this-repo-url>
 cd "compliance monitoring system"
@@ -106,7 +187,40 @@ This will:
 docker compose up -d airflow-webserver airflow-scheduler
 ```
 
-This will also start the Postgres service defined in `Docker-compose.yml` if it is not already running.
+# 1. Clean slate
+docker-compose down -v
+docker system prune -a -f
+
+# 2. Use simple docker-compose.yml from step 3
+# 3. Start
+docker-compose up -d
+
+# 4. Wait longer (Airflow can take time)
+echo "Waiting 90 seconds..."
+sleep 90
+
+# 5. Check
+docker-compose ps
+
+# 6. Check logs
+
+
+
+# 7. Try direct access to container
+docker-compose exec airflow curl http://localhost:8080/health || echo "Not running inside container"
+
+# 8. Check if process is running
+docker-compose exec airflow ps aux | grep webserver
+
+# If Airflow is running, reset the admin user
+docker-compose exec airflow airflow users create \
+  --username admin \
+  --password admin \
+  --firstname Admin \
+  --lastname User \
+  --role Admin \
+  --email admin@example.com \
+   # This overwrites existing user
 
 - **3. Access the Airflow UI**
   - Open `http://localhost:8080` in your browser.
