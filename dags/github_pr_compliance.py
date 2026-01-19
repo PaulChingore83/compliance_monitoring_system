@@ -72,7 +72,7 @@ with DAG(
         
         try:
             # Get configuration
-            repo_owner = Variable.get("GITHUB_OWNER", default_var="Scytale-exercise")
+            repo_owner = Variable.get("GITHUB_OWNER", default_var="home-assistant")
             access_token = Variable.get("GITHUB_ACCESS_TOKEN", default_var="")
             
             # Initialize extractor
